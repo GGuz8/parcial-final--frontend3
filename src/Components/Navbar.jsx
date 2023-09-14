@@ -10,7 +10,7 @@ const Navbar = () => {
   
   return (
     <nav>
-      <Link to="/home">Home</Link>
+      <Link to="/">Home</Link>
       <Link to="/detail">Detail</Link>
       <Link to="/favs">Favs</Link>
       <Link to="/contact">Contact</Link>
