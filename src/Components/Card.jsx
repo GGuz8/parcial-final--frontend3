@@ -1,32 +1,48 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
+function Card({  item }) {
+  const [isFavorite, setIsFavorite] = useState(false);
 
-const Card = ({ item }) => {
+  useEffect(() => {
+    const favoriteCards = JSON.parse(localStorage.getItem('favoriteCards')) || [];
+    const isCardFavorite = favoriteCards.some(card => card.id === item.id);
+    
+    setIsFavorite(isCardFavorite);
+  
+  }, []);
 
-  const addFav = () => {
-    // Aqui iria la logica para agregar la Card en el localStorage
-  }
+  const handleToggleFavorite = () => {
+    const favoriteCards = JSON.parse(localStorage.getItem('favoriteCards')) || [];
+    
+    if (isFavorite) {
+      
+      const updatedFavoriteCards = favoriteCards.filter(card => card.id !== item.id);
+      localStorage.setItem('favoriteCards', JSON.stringify(updatedFavoriteCards));
+    } else {
+      
+      favoriteCards.push({ ...item });
+      localStorage.setItem('favoriteCards', JSON.stringify(favoriteCards));
+    }
+    setIsFavorite(!isFavorite);
+  };
 
   return (
+    <div className="card-dentista">
+      <Link to={`/detail/${item.id}`} >
+        <div className="card-dentista-child">
 
-    <Link to={`/detail/${item.id}`} >
-      <div className="card-dentista">
-        {/* En cada card deberan mostrar en name - username y el id */}
-        <h1> {item.name} </h1>
-        <h2> {item.username} </h2>
-        <h3> {item.id} </h3>
+          <h1> {item.name} </h1>
+          <h2> {item.username} </h2>
+          <h3> {item.id} </h3>
+        </div>
 
-
-        {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
-
-
-
-        {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-        <button onClick={addFav} className="favButton">Add fav</button>
-      </div>
-    </Link>
+      </Link>
+      <button onClick={handleToggleFavorite} className="favButton">
+      {isFavorite ? 'Eliminar de Favoritos' : 'Marcar como Favorito'}
+      </button>
+    </div>
   );
-};
+}
 
 export default Card;
