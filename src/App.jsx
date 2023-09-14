@@ -3,8 +3,12 @@ import Card from './Components/Card'
 import Navbar from './Components/Navbar'
 import Footer from './Components/Footer'
 import Form from './Components/Form'
-import Layout from './Components/Layout'
+import Layout from './Routes/Layout'
 import Body from './Components/Body'
+import Home from './Routes/Home'
+import Detail from './Routes/Detail'
+import Favs from './Routes/Favs'
+import Contact from './Routes/Contact'
 import {
   BrowserRouter as Router,
   Routes,
@@ -29,14 +33,21 @@ function App() {
   return (
     <>
       <div className='app'>
-        <GlobalContextProvider>
+        <Router>
+          <GlobalContextProvider>
 
-          <Layout>
-             <Navbar/>
-             <Body/>
-          </Layout>
+            <Layout>
+              <Navbar />
+              <Routes>
+                <Route path='/' element={<Home/>}/>
+                <Route path='/favs' element={<Favs/>}/>
+                <Route path='/contact' element={<Contact/>}/>
+                <Route path='/detail/:id' element={<Detail/>}/>  
+              </Routes>
+            </Layout>
 
-        </GlobalContextProvider>
+          </GlobalContextProvider>
+        </Router>
 
 
       </div>

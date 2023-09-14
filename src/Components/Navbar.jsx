@@ -1,5 +1,4 @@
 import React from 'react'
-import { useContext } from 'react'
 import {useGlobalContext} from '../context'
 import { Link } from 'react-router-dom'
 
@@ -8,6 +7,7 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
 
   const {theme, handleChangeTheme} = useGlobalContext()
+  
   return (
     <nav>
       <Link to="/home">Home</Link>
