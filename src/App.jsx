@@ -1,33 +1,45 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Card from './Components/Card'
+import Navbar from './Components/Navbar'
+import Footer from './Components/Footer'
+import Form from './Components/Form'
+import Layout from './Components/Layout'
+import Body from './Components/Body'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom"
+import { GlobalContextProvider, themes } from './context'
+import { useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [theme, setTheme] = useState(themes.light)
+
+  const handleChangeTheme = () => {
+    theme === themes.dark ? setTheme(themes.light) : setTheme(themes.dark)
+  }
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className='app'>
+        <GlobalContextProvider>
+
+          <Layout>
+             <Navbar/>
+             <Body/>
+          </Layout>
+
+        </GlobalContextProvider>
+
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
