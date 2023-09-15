@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Card from '../Components/Card';
 
 function FavoriteCards() {
   const [favoriteCards, setFavoriteCards] = useState([]);
@@ -9,18 +10,18 @@ function FavoriteCards() {
   }, []);
 
   return (
-    <div>
+    <main className=''>
       <h1>Tarjetas Favoritas</h1>
-      <div className="favorite-cards">
+      <div className="card-grid">
         {favoriteCards.map((card, index) => (
-          <div key={index} className="favorite-card">
-            <h2>{card.name}</h2>
-            <p>{card.username}</p>
-            <p>{card.id}</p>
-          </div>
+          <Card
+            key={index}
+            item={card}
+
+          />
         ))}
       </div>
-    </div>
+    </main>
   );
 }
 

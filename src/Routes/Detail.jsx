@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 
 
 const Detail = () => {
- 
+
 
   const { id } = useParams()
   const navigate = useNavigate()
@@ -33,20 +33,23 @@ const Detail = () => {
   }, []);
 
   return (
-    <>
-      {loading ? <h1>Loading...</h1> : 
-      
-      <div className='card'>
-        <h1>Detail Dentist id </h1>
-        <h3>{data.name}</h3>
-        <p>{data.email}</p>
-        <p>{data.phone}</p>
-        <p>{data.website}</p>
+    <main>
+      <div className='detail-container'>
+        {loading ? <h1>Loading...</h1> :
+
+          <div className='card'>
+            <h2>Detail Dentist id </h2>
+            <h3>{data.name}</h3>
+            <p>{data.email}</p>
+            <p>{data.phone}</p>
+            <p>{data.website}</p>
+          </div>
+
+        }
+
       </div>
 
-      }
-      
-    </>
+    </main>
   )
 }
 

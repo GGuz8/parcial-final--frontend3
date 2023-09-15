@@ -1,49 +1,147 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+body, html, #root, .app, .main {
+  min-height: 100vh;
 }
 
 .card-dentista {
   padding: 2em;
-  background-color: #888;
   margin: 30px 0px;
 
 }
 
-.card-dentista-child {
+
+
+.navBar {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  padding: 0px 15%;
+}
+
+.navBar-container {
+  width: 100%;
+}
+
+.containerLi {
+  display: flex;
+  width: 300px;
+  align-items: center;
+
+}
+
+.containerLi div {
+  padding: 0px 20px;
+}
+
+.containerLi div a {
+  text-decoration: none;
+
+}
+
+
+.navBar img {
+  max-width: 130px;
+  max-height: 80px;
+}
+
+.card-dentista{
+  width: 200px;
+  height: 350px;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.card-dentista a{
+  text-decoration: none;
+}
+
+.card-dentista img{
+  width: 170px;
+  height: 170px;
   cursor: pointer;
 }
 
-.read-the-docs {
-  color: #888;
+.card-dentista-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+}
+
+.favButton {
+  margin-top: 30px;
+}
+
+
+.card-child1  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100px;
+  justify-content: space-evenly;
+}
+
+.card-child1 h2  {
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.card-child1 h3  {
+  font-size: 16px;
+  text-decoration: none;
+}
+
+main {
+  height: 100%;
+  padding: 0px 15%;
+}
+
+main h2, main h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.detail-container {
+  height: 50vh;
+  width: 100%;
+}
+
+.detail-container h2 {
+  margin: 10px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.detail-container h3 {
+  margin: 10px 0px;}
+
+.detail-container p {
+  margin: 10px 0px;}
+
+.detailDentist {
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+}
+
+

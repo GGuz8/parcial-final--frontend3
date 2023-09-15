@@ -1,24 +1,38 @@
 import React from 'react'
-import {useGlobalContext} from '../context'
+import { useGlobalContext } from '../context'
 import { Link } from 'react-router-dom'
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Navbar = () => {
 
-  const {theme, handleChangeTheme} = useGlobalContext()
-  
-  return (
-    <nav>
-      <Link to="/">Home</Link>
-      {/* <Link to="/detail">Detail</Link> */}
-      <Link to="/favs">Favs</Link>
-      <Link to="/contact">Contact</Link>
+  const { navBarTheme, handleChangeTheme } = useGlobalContext()
 
-      <button onClick={handleChangeTheme}
-      style={{background: theme.background, color: theme.font}}
-      >Change theme</button>
-    </nav>
+  return (
+    <div className='navBar-container'>
+      <nav className="navBar" style={{ background: navBarTheme.background, color: navBarTheme.font }} >
+        <img src="../public/images/guzLogo.png" alt="Logo" />
+
+        <div className='containerLi'>
+          <div>
+            <Link style={{ background: navBarTheme.background, color: navBarTheme.font }} to="/">Home</Link>
+          </div>
+          {/* <Link to="/detail">Detail</Link> */}
+
+          <div>
+            <Link style={{ background: navBarTheme.background, color: navBarTheme.font }} to="/favs">Favs</Link>
+          </div>
+
+          <div>
+            <Link style={{ background: navBarTheme.background, color: navBarTheme.font }} to="/contact">Contact</Link>
+          </div>
+          <button onClick={handleChangeTheme}
+            style={{ background: navBarTheme.background, color: navBarTheme.font }}
+          ><i className="fa-solid fa-circle-half-stroke"></i></button>
+
+        </div>
+      </nav>
+    </div>
   )
 }
 
