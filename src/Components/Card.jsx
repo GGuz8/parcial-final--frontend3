@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {useGlobalContext} from "../context"
 
-function Card({ item }) {
+function Card({ item, changeButton }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const {theme} = useGlobalContext()
 
@@ -13,6 +13,8 @@ function Card({ item }) {
     setIsFavorite(isCardFavorite);
 
   }, []);
+
+
 
   const handleToggleFavorite = () => {
     const favoriteCards = JSON.parse(localStorage.getItem('favoriteCards')) || [];
@@ -27,6 +29,7 @@ function Card({ item }) {
       localStorage.setItem('favoriteCards', JSON.stringify(favoriteCards));
     }
     setIsFavorite(!isFavorite);
+    changeButton()
   };
 
   return (

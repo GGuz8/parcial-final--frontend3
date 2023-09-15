@@ -1,8 +1,10 @@
 import React from "react";
 import { useState } from "react";
+import { useGlobalContext } from '../context'
 
 
 const Form = () => {
+  const { navBarTheme, handleChangeTheme } = useGlobalContext()
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [formValid, setFormValid] = useState(false);
@@ -35,7 +37,7 @@ const Form = () => {
           <p>Formulario enviado</p>
         </div>
       );
-    } else if(submited) {
+    } else if (submited) {
       return (
         <div className="formError">
           <p>Email incorrecto</p>
@@ -46,25 +48,37 @@ const Form = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="usernameInput">Username</label>
-        <input
-          id="usernameInput"
-          type="text"
-          value={username}
-          onChange={onChangeUsername}
-        />
-        <label htmlFor="emailInput">Email</label>
-        <input
-          id="emailInput"
-          type="text"
-          value={email}
-          onChange={onChangeEmail}
-        />
+    <div className="container-form" >
+      <form style={{ background: navBarTheme.background, color: navBarTheme.font}} onSubmit={onSubmit}>
+        <p>Send us your questions and we will contact you</p>
+
+        <div className="input-label">
+          <label htmlFor="usernameInput">Username</label>
+          <input
+            id="usernameInput"
+            type="text"
+            value={username}
+            onChange={onChangeUsername}
+          />
+        </div>
+
+        <div className="input-label">
+
+          <label htmlFor="emailInput">Email</label>
+          <input
+            id="emailInput"
+            type="text"
+            value={email}
+            onChange={onChangeEmail}
+          />
+        </div>
+
         <button type="submit">Enviar</button>
+      <div className="form-status">
+        {renderFormStatus()}
+      </div>
       </form>
-      {renderFormStatus()}
+
     </div>
   );
 };

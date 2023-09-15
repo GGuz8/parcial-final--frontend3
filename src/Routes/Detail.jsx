@@ -38,7 +38,9 @@ const Detail = () => {
         {loading ? <h1>Loading...</h1> :
 
           <div className='card'>
-            <h2>Detail Dentist id </h2>
+            <div className='detailDentist'>
+              <h2>Detail Dentist id </h2>
+            </div>
             <h3>{data.name}</h3>
             <p>{data.email}</p>
             <p>{data.phone}</p>

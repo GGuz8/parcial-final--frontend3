@@ -3,11 +3,20 @@ import Card from '../Components/Card';
 
 function FavoriteCards() {
   const [favoriteCards, setFavoriteCards] = useState([]);
+  const [onChangeButton, setOnChangeButton] = useState(false)
+
+  const handleChangeButton = () => {
+    onChangeButton ? setOnChangeButton(false) : setOnChangeButton(true)
+  }
+
 
   useEffect(() => {
     const tarjetasFavoritasGuardadas = JSON.parse(localStorage.getItem('favoriteCards')) || [];
     setFavoriteCards(tarjetasFavoritasGuardadas);
-  }, []);
+
+    
+
+  }, [onChangeButton]);
 
   return (
     <main className=''>
@@ -17,6 +26,7 @@ function FavoriteCards() {
           <Card
             key={index}
             item={card}
+            changeButton={handleChangeButton}
 
           />
         ))}
